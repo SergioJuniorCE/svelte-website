@@ -1,5 +1,5 @@
 <script>
-  import { range } from '../../static/js/range.js';
+  import { range } from '/static/js/range';
   export let imgs;
 </script>
 

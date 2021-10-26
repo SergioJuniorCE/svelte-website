@@ -1,10 +1,10 @@
 <script>;
-  import Navbar from "../components/Navbar.svelte";
+  import Navbar from "../components/navbar/Navbar.svelte";
 </script>
 
 <Navbar/>
 
-<div class="container">
+<div class="container mt-3">
   <slot/>
 </div>
   
