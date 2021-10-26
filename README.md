@@ -1,2 +1,2 @@
-Backend made in Django
-Frontend made in svelte
+# Backend made in Django
+# Frontend made in svelte
