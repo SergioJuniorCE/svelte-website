@@ -20,6 +20,7 @@
 				<NavItem value="Home"/>
         <Dropdown value="Utils" route="utils" items={[
           {value: 'Trip Cost', route: 'trip-cost'},
+					{value: 'Todos', route: 'todos'},
           {div: true},
           {value: 'Expense manager', route: 'expenses'},
         ]} />

@@ -7,7 +7,7 @@ urlpatterns = [
     # Django
     path('admin/', admin.site.urls),
     # Third party
-    path('api-auth/', include('rest_framework.urls')),
+    path('api/auth/', include('rest_framework.urls')),
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/toke/refresh/', TokenRefreshView.as_view()),
     # Own
