@@ -9,11 +9,9 @@
 	};
 </script>
 
-{#if inDropdown == undefined}
+{#if inDropdown == undefined || inDropdown == false || inDropdown == null}
 	<li class="nav-item">
-		<a class="nav-link active" aria-current="page" href="/" on:click={handleClick}
-			>{value}</a
-		>
+		<a class="nav-link active" aria-current="page" href="/{route}" on:click={handleClick}>{value}</a>
 	</li>
 {/if}
 {#if inDropdown}

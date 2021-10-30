@@ -4,7 +4,7 @@ import { variables } from '$lib/variables'
 export const todos = writable([]);
 
 const fetchTodos = async() => {
-    const url = `${variables.api}/todos/`;
+    const url = `${variables.API_URL}/todos/`;
     try {
         const res = await fetch(url);
         const data = await res.json();

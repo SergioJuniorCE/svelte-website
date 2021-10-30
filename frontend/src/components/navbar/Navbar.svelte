@@ -1,6 +1,6 @@
 <script>
-  import NavItem from "./NavItem.svelte";
-  import Dropdown from "./Dropdown.svelte";
+	import NavItem from './NavItem.svelte';
+	import Dropdown from './Dropdown.svelte';
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -17,18 +17,21 @@
 		>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<NavItem value="Home"/>
-        <Dropdown value="Utils" route="utils" items={[
-          {value: 'Trip Cost', route: 'trip-cost'},
-					{value: 'Todos', route: 'todos'},
-          {div: true},
-          {value: 'Expense manager', route: 'expenses'},
-        ]} />
+				<NavItem value="Home" route="" />
+				<Dropdown
+					value="Utils"
+					route="utils"
+					items={[
+						{ value: 'Trip Cost', route: 'trip-cost' },
+						{ value: 'Todos', route: 'todos' },
+						{ div: true },
+						{ value: 'Expense manager', route: 'expenses' },
+						{ div: true },
+						{ value: 'Stack calculator', route: 'stack-calculator' },
+					]}
+				/>
+				<NavItem value="PCs" route="list" />
 			</ul>
-			<!-- <form class="d-flex">
-				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-				<button class="btn btn-success" type="submit">Search</button>
-			</form> -->
 		</div>
 	</div>
 </nav>
