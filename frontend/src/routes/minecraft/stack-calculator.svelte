@@ -21,6 +21,10 @@
 		return result;
 	}
 
+	function once() {
+		alert(convert())
+	}
+
 	function addBlock() {
 		let items = convert();
 		blocks = [...blocks, { name: capitalize(name), amount: items }];
@@ -67,6 +71,9 @@
 				</td>
 				<td>
 					<button class="btn btn-primary" on:click={addBlock}>Add</button>
+				</td>
+				<td>
+					<button class="btn btn-primary" on:click={once}>Once</button>
 				</td>
 				<td>
 					<button class="btn btn-danger" on:click={clear}>Clear</button>
