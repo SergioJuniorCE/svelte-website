@@ -26,8 +26,14 @@
 						{ value: 'Todos', route: 'todos' },
 						{ div: true },
 						{ value: 'Expense manager', route: 'expenses' },
-						{ div: true },
-						{ value: 'Stack calculator', route: 'stack-calculator' },
+					]}
+				/>
+				<Dropdown
+					value="Minecraft"
+					route="minecraft"
+					items={[
+						{ value: 'Farms', route: 'farms' },
+						{ value: 'Stack Calculator', route: 'stack-calculator' },
 					]}
 				/>
 				<NavItem value="PCs" route="list" />

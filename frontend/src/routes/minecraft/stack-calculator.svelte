@@ -4,7 +4,7 @@
 	$: blocks = [];
 
 	let name = '';
-	let amount = 0;
+	let amount;
 
 	onMount(() => {
 		blocks = JSON.parse(localStorage.getItem('blocks')) || [];
@@ -43,7 +43,7 @@
 	}
 
 	function focus() {
-		document.getElementById('name').focus();
+		document.getElementById('amount').focus();
 	}
 
 	function capitalize(string) {
@@ -53,21 +53,22 @@
 </script>
 
 <!-- Center div horizontally -->
-<div style="width: 25rem; margin: auto;">
+<div style="width: 35rem; margin: auto;">
 	<form on:submit|preventDefault={focus}>
 		<table>
 			<tr>
 				<td>
-					<input id="name" class="form-control" type="text" placeholder="Block name" bind:value={name} />
-				</td>
-				<td>
 					<input
+						id="amount"
 						class="form-control"	
 						type="number"
 						placeholder="Block amount"
 						min="0"
 						bind:value={amount}
 					/>
+				</td>
+				<td>
+					<input id="name" class="form-control" type="text" placeholder="Block name" bind:value={name} />
 				</td>
 				<td>
 					<button class="btn btn-primary" on:click={addBlock}>Add</button>

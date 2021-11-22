@@ -7,7 +7,7 @@
 <hr>
 <div class="row">
   <div class="col">
-    <!-- <TodoForm/> -->
+    <TodoForm/>
   </div>
   <div class="col" style="overflow-y: scroll; height: 45rem;">
     <TodoList/>

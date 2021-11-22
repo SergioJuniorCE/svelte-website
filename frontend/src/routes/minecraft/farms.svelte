@@ -1,5 +1,5 @@
 <script>
-	import Tutorial from './Tutorial.svelte';
+	import Tutorial from '../../components/Tutorial.svelte';
 
 	let tutorials = [
 		{ title: 'All Mob Farm', items: [{ name: 'stone', amount: 1536 }], video: 'HtKoviqHUNs' },
@@ -25,7 +25,7 @@
 			{/each}
 		</ul>
 	</div>
-	<div class="col-sm-10">
+	<div class="col-sm-10" style="overflow-y: scroll; height: 90vh">
 		<h2>Tutorials</h2>
 		<hr />
 		{#each tutorials as tutorial}
@@ -33,9 +33,6 @@
 				title={tutorial.title}
 				items={tutorial.items}
 				video={tutorial.video}
-				id={() => {
-					createId(tutorial.title);
-				}}
 			/>
 		{/each}
 	</div>

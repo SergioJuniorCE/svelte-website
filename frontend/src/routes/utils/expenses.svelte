@@ -75,13 +75,13 @@
 </script>
 
 <div style="height: 10rem;">
-	<Line
+	<!-- <Line
 		data={{
 			labels: ['Needs', 'Wants', 'Savings'],
 			datasets: data
 		}}
 		options={{ responsive: true }}
-	/>
+	/> -->
 </div>
 
 <h1>50/30/20 follow the rule</h1>

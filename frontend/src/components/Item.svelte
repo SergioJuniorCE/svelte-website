@@ -34,4 +34,4 @@
 	}
 </script>
 
-<img src="/minecraft/{name}.png" alt="" style="width: 1rem" />&nbsp;{capitalize(name)} - {convert()}
+<img src="/minecraft/{name}.png" alt="{name}" style="width: 1rem" />&nbsp;{capitalize(name)} - {convert()}
