@@ -4,7 +4,6 @@
 	import { supabase } from '$lib/database';
 	import Editor from '@tinymce/tinymce-svelte';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 	let post: { title: any; content: any };
 
 	onMount(async () => {

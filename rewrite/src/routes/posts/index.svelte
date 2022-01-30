@@ -1,12 +1,7 @@
 <script>
-	import CreatePost from './CreatePost.svelte';
+	import Search from './Search.svelte';
 
 	import { supabase } from '$lib/database';
-	import { onMount } from 'svelte';
-
-	import Editor from '@tinymce/tinymce-svelte';
-	import { constants } from '$lib/constants';
-
 	import { readable, get } from 'svelte/store';
 	let title;
 	let content;
@@ -28,25 +23,16 @@
 			supabase.removeSubscription(subscriptions);
 		};
 	});
-
-	onMount(async () => {
-		// const { data, error } = await supabase.from('posts').select('*');
-		// posts = data;
-	});
-
-	async function handleSubmit() {
-		const { data, error } = await supabase.from('posts').insert([{ title, content }]);
-	}
 </script>
 
 <main>
+	<Search />
 	<h2 class="text-center">View posts</h2>
-  
+
 	{#if $posts}
 		{#each $posts as { title, featured }}
 			{#if featured === false}
 				<li><a class="h6" style="color: cornflowerblue" href="/posts/{title}">{title}</a></li>
-				<br />
 			{/if}
 		{:else}
 			<p>No posts atm</p>
