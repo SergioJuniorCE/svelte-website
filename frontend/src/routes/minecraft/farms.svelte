@@ -1,5 +1,5 @@
 <script>
-	import Tutorial from '../../components/Tutorial.svelte';
+	import Tutorial from '$lib/components/Tutorial.svelte';
 
 	let tutorials = [
 		{ title: 'All Mob Farm', items: [{ name: 'stone', amount: 1536 }], video: 'HtKoviqHUNs' },

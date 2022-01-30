@@ -74,82 +74,89 @@
 	};
 </script>
 
-<div style="height: 10rem;">
-	<!-- <Line
-		data={{
-			labels: ['Needs', 'Wants', 'Savings'],
-			datasets: data
-		}}
-		options={{ responsive: true }}
-	/> -->
-</div>
-
 <h1>50/30/20 follow the rule</h1>
-<!-- add and clear income button group -->
-<div class="btn-group mt-2" role="group" aria-label="Basic example">
-	<button type="button" class="btn btn-primary" on:click={addIncome}>Add Income</button>
-	<button type="button" class="btn btn-secondary" on:click={testClearIncome}>Clear Income</button>
-</div>
-<!-- Bootstrap table -->
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th scope="col">Name</th>
-			<th scope="col">Income</th>
-			<th scope="col" class="actions">Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<!-- Income form  -->
-		<tr
-			on:keypress={(event) => {
-				if (event.key === 'Enter') {
-					addIncome();
-					name.focus();
-				}
-			}}
-		>
-			<td>
-				<input class="form-control" type="text" placeholder="Enter income name" bind:value={name} />
-			</td>
-			<td>
-				<input
-					class="form-control"
-					type="number"
-					placeholder="Enter income amount"
-					bind:value={amount}
-				/>
-			</td>
-			<td>
-				<button type="button" class="btn btn-primary" on:click={addIncome}
-					><i class="fas fa-plus" /></button
-				>
-			</td>
-			<!-- Income form -->
-		</tr>
-		{#if incomes.length > 0}
-			{#each incomes as income, i}
+<!-- Input -->
+<div class="row">
+	<div class="col">
+		<!-- add and clear income button group -->
+		<div class="btn-group mt-2" role="group" aria-label="Basic example">
+			<button type="button" class="btn btn-primary" on:click={addIncome}>Add Income</button>
+			<button type="button" class="btn btn-secondary" on:click={testClearIncome}
+				>Clear Income</button
+			>
+		</div>
+		<!-- Bootstrap table -->
+		<table class="table table-hover">
+			<thead>
 				<tr>
-					<td>
-						<input class="form-control" type="text" bind:value={income.name} />
-					</td>
-					<td>
-						<input class="form-control" type="number" bind:value={income.amount} />
-					</td>
-					<td>
-						<!-- Trashcan icon -->
-						<button type="button" class="btn btn-primary" on:click={editIncome}
-							><i class="fas fa-edit" /></button
-						>
-						<button type="button" class="btn btn-danger" on:click={() => deleteIncome(income.name)}
-							><i class="fas fa-trash" /></button
-						>
-					</td>
+					<th scope="col">Name</th>
+					<th scope="col">Income</th>
+					<th scope="col" class="actions">Actions</th>
 				</tr>
-			{/each}
-		{/if}
-	</tbody>
-</table>
+			</thead>
+			<tbody>
+				<!-- Income form  -->
+				<tr
+					on:keypress={(event) => {
+						if (event.key === 'Enter') {
+							addIncome();
+							name.focus();
+						}
+					}}
+				>
+					<td>
+						<input
+							class="form-control"
+							type="text"
+							placeholder="Enter income name"
+							bind:value={name}
+						/>
+					</td>
+					<td>
+						<input
+							class="form-control"
+							type="number"
+							placeholder="Enter income amount"
+							bind:value={amount}
+						/>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" on:click={addIncome}
+							><i class="fas fa-plus" /></button
+						>
+					</td>
+					<!-- Income form -->
+				</tr>
+				{#if incomes.length > 0}
+					{#each incomes as income, i}
+						<tr>
+							<td>
+								<input class="form-control" type="text" bind:value={income.name} />
+							</td>
+							<td>
+								<input class="form-control" type="number" bind:value={income.amount} />
+							</td>
+							<td>
+								<!-- Trashcan icon -->
+								<button type="button" class="btn btn-primary" on:click={editIncome}
+									><i class="fas fa-edit" /></button
+								>
+								<button
+									type="button"
+									class="btn btn-danger"
+									on:click={() => deleteIncome(income.name)}><i class="fas fa-trash" /></button
+								>
+							</td>
+						</tr>
+					{/each}
+				{/if}
+			</tbody>
+		</table>
+	</div>
+	<div class="col">
+		asd
+	</div>
+</div>
 
 <p>Income total = {totalIncome}</p>
 

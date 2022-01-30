@@ -1,6 +1,6 @@
 <script>
-  import TodoList from "../../components/utils/todos/TodoList.svelte";
-  import TodoForm from "../../components/utils/todos/TodoForm.svelte";
+  import TodoList from "$lib/components/utils/todos/TodoList.svelte";
+  import TodoForm from "$lib/components/utils/todos/TodoForm.svelte";
 </script>
 
 <h1>Todos</h1>

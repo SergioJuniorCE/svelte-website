@@ -1,5 +1,5 @@
 <script>
-  import { todos } from "../../../stores/todos"
+  import { todos } from "$lib/stores/todos"
   import Todo from "./Todo.svelte"
 </script>
 {#each $todos as todo}

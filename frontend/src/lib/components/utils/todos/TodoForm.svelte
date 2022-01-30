@@ -10,11 +10,11 @@
 	$: todos = [];
 
 	onMount(() => {
-		todos = JSON.parse(localStorage.getItem('todos') || []) ;
+		todos = JSON.parse(localStorage.getItem('todos') || []);
 	});
 
 	function create() {
-    if (title == '' || !title.trim()) {
+		if (title == '' || !title.trim()) {
 			Swal.fire({
 				title: "Title can't be empty.",
 				icon: 'error'
@@ -27,9 +27,8 @@
 				icon: 'success'
 			});
 		}
-	};
+	}
 </script>
-
 
 <div class="mb-3">
 	<label for="title" class="form-label">Title</label>

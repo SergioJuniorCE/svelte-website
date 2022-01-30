@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Cpu } from './classes';
+	import { Cpu } from '$lib/utils/classes';
 	$: cpus = [];
 
 	let cpu = new Cpu(
@@ -27,7 +27,6 @@
 	function yesOrNo(value) {
 		return value ? 'Yes' : 'No';
 	}
-
 </script>
 
 <!-- CPU table -->
@@ -51,10 +50,7 @@
 			{#each cpus as cpu}
 				<tr>
 					<td>
-						<img 
-							src="{cpu.image}"
-							alt="{cpu.fullName} Processor"
-							style="width: 2rem;">
+						<img src={cpu.image} alt="{cpu.fullName} Processor" style="width: 2rem;" />
 						{cpu.fullName}
 					</td>
 					<td>{cpu.core_count}</td>

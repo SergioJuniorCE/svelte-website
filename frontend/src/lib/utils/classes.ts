@@ -53,7 +53,7 @@ export class Cpu extends Component {
 		integrated_graphics: boolean,
 		smt: boolean,
 		rating: number,
-		price: { value: string; currency: string }
+		price: { value: number; currency: string }
 	) {
 		super(image, brand, rating, price, name);
 		this.tier = tier;

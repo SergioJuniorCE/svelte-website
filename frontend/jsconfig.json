@@ -8,5 +8,5 @@
 			"$static": ["static"]
 		}
 	},
-	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte", "src/stores/todos.ts"]
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte", "src/lib/stores/todos.ts"]
 }
