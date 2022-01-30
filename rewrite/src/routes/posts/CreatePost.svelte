@@ -1,6 +1,4 @@
 <script>
-	import CreatePost from './CreatePost.svelte';
-
 	import { supabase } from '$lib/database';
 	import { onMount } from 'svelte';
 
@@ -39,19 +37,13 @@
 	}
 </script>
 
-<main>
-	<h2 class="text-center">View posts</h2>
-  
-	{#if $posts}
-		{#each $posts as { title, featured }}
-			{#if featured === false}
-				<li><a class="h6" style="color: cornflowerblue" href="/posts/{title}">{title}</a></li>
-				<br />
-			{/if}
-		{:else}
-			<p>No posts atm</p>
-		{/each}
-	{:else}
-		<p>waiting on posts</p>
-	{/if}
-</main>
+<h2>Create post</h2>
+
+				<div class="my-3 w-50">
+					<label for="post-title">Title</label>
+					<input name="post-title" type="text" class="form-control" bind:value={title} />
+				</div>
+
+				<Editor apiKey={constants.TINYMCE_APIKEY} bind:value={content} />
+				<button class="btn btn-success" on:click={handleSubmit}>Save</button>
+
