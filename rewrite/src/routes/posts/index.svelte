@@ -58,9 +58,11 @@
 		<div class="col">
 			<h2>View posts</h2>
 			{#if $posts}
-				{#each $posts as { title, content }}
-					<a href="/posts/{title}">{title}</a>
-          <br>
+				{#each $posts as { title, featured }}
+					{#if featured === false}
+						<a href="/posts/{title}">{title}</a>
+						<br />
+					{/if}
 				{:else}
 					<p>No posts atm</p>
 				{/each}

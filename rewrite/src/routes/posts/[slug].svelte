@@ -27,13 +27,13 @@
 	let submit = false;
 	let commentContent;
 
-	function handleKeyup(event){ 
-		alert(1)
+	function handleKeyup(event) {
+		alert(1);
 		if (event.code == 'Enter') {
-			event.preventDefault()
-			event.target.value
-			commentContent = event.target.value
-			return false
+			event.preventDefault();
+			event.target.value;
+			commentContent = event.target.value;
+			return false;
 		}
 	}
 </script>
@@ -63,7 +63,7 @@
 			aria-hidden="true"
 			data-bs-backdrop="static"
 		>
-			<div class="modal-dialog">
+			<div class="modal-dialog modal-fullscreen">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="editModalLabel">Edit post</h5>
