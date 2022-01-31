@@ -33,6 +33,7 @@
   "type": "module",
   "dependencies": {
     "@supabase/supabase-js": "^1.29.3",
+    "@sweetalert2/theme-dark": "^5.0.8",
     "@tinymce/tinymce-svelte": "^0.1.2",
     "sass": "^1.49.0",
     "sveltestrap": "^5.7.0",
