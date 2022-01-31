@@ -1,16 +1,13 @@
 <script lang="ts">
 	import { supabase } from '$lib/database';
+	import { session } from '$app/stores';
 
 	let email: string;
 	let password: string;
 
-  let userInfo;
-  let sessionInfo;
-
 	async function handleSignUp() {
-		const { user, session, error } = await supabase.auth.signUp({ email, password });
-    userInfo = user;
-    sessionInfo = session;
+		const { user, session: ses, error } = await supabase.auth.signUp({ email, password });
+		$session = ses;
 		if (error) {
 			alert(error.message);
 		}
@@ -30,5 +27,3 @@
 		<button class="btn btn-success" type="submit">Sign Up</button>
 	</div>
 </form>
-User info {userInfo}
-Session info {sessionInfo}
