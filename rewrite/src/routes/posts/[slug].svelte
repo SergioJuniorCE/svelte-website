@@ -6,6 +6,10 @@
 	import { onMount } from 'svelte';
 	let post: { title: any; content: any };
 
+	let conf = constants.TINYMCE_CONFIG;
+
+	let editing;
+
 	onMount(async () => {
 		let { data, error } = await supabase.from('posts').select('*').eq('title', $page.params.slug);
 		post = data[0];
@@ -49,7 +53,7 @@
 			aria-hidden="true"
 			data-bs-backdrop="static"
 		>
-			<div class="modal-dialog modal-fullscreen">
+			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="editModalLabel">Edit post</h5>
@@ -60,7 +64,7 @@
 							<label for="post-title">Title</label>
 							<input name="post-title" type="text" class="form-control" bind:value={post.title} />
 						</div>
-						<Editor apiKey={constants.TINYMCE_APIKEY} bind:value={post.content} />
+						<Editor apiKey={constants.TINYMCE_APIKEY} bind:value={post.content} {conf} />
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -79,10 +83,3 @@
 	{/if}
 </div>
 <hr />
-<h5>Comments</h5>
-<div>
-	<div class="mt-3">
-		<textarea class="form-control" placeholder="Add comment" rows="1" />
-	</div>
-	<div class="mt-3" />
-</div>

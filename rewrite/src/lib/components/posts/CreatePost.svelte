@@ -4,6 +4,7 @@
 	import { constants } from '$lib/constants';
 	let title;
 	let content;
+	let conf = constants.TINYMCE_CONFIG;
 	async function handleSubmit() {
 		const { data, error } = await supabase.from('posts').insert([{ title, content }]);
 	}
@@ -16,5 +17,5 @@
 	<input name="post-title" type="text" class="form-control" bind:value={title} />
 </div>
 
-<Editor apiKey={constants.TINYMCE_APIKEY} bind:value={content} />
+<Editor apiKey={constants.TINYMCE_APIKEY} bind:value={content} {conf} />
 <button class="btn btn-success" on:click={handleSubmit}>Save</button>

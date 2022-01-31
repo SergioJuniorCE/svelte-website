@@ -36,6 +36,7 @@
 		{:else}
 			<SpinnerCard />
 		{/if}
+		<h6>💥 Regular posts</h6>
 		{#if normalPosts}
 			<div class="row">
 				{#each normalPosts as { title }}
