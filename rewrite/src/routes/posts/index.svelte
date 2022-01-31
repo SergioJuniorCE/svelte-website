@@ -1,43 +1,51 @@
-<script>
-	import Search from './Search.svelte';
-
+<script context="module">
 	import { supabase } from '$lib/database';
-	import { readable, get } from 'svelte/store';
-	let title;
-	let content;
-	const posts = readable(null, (set) => {
-		supabase
-			.from('posts')
-			.select('*')
-			.then(({ data, error }) => set(data));
-		const subscriptions = supabase
-			.from('posts')
-			.on('*', (payload) => {
-				if (payload.eventType === 'INSERT') {
-					set([...get(posts), payload.new]);
-				}
-			})
-			.subscribe();
+	export async function load() {
+		const { data: featuredPosts } = await supabase.from('posts').select('*').eq('featured', true);
+		const { data: normalPosts } = await supabase.from('posts').select('*').eq('featured', false);
 
-		return () => {
-			supabase.removeSubscription(subscriptions);
+		return {
+			props: {
+				featuredPosts,
+				normalPosts
+			}
 		};
-	});
+	}
+</script>
+
+<script>
+	import PostCard from '$lib/components/posts/PostCard.svelte';
+	import SpinnerCard from '$lib/components/SpinnerCard.svelte';
+
+	export let featuredPosts;
+	export let normalPosts;
 </script>
 
 <main>
-	<Search />
-	<h2 class="text-center">View posts</h2>
-
-	{#if $posts}
-		{#each $posts as { title, featured }}
-			{#if featured === false}
-				<li><a class="h6" style="color: cornflowerblue" href="/posts/{title}">{title}</a></li>
-			{/if}
+	<div class="text-center">
+		<h3>Posts</h3>
+		<h6>⭐ Featured posts</h6>
+		{#if featuredPosts}
+			<div class="row">
+				{#each featuredPosts as { title }}
+					<PostCard {title} />
+				{:else}
+					<p>No posts atm</p>
+				{/each}
+			</div>
 		{:else}
-			<p>No posts atm</p>
-		{/each}
-	{:else}
-		<p>waiting on posts</p>
-	{/if}
+			<SpinnerCard />
+		{/if}
+		{#if normalPosts}
+			<div class="row">
+				{#each normalPosts as { title }}
+					<PostCard {title} />
+				{:else}
+					<p>No posts atm</p>
+				{/each}
+			</div>
+		{:else}
+			<SpinnerCard />
+		{/if}
+	</div>
 </main>

@@ -22,19 +22,6 @@
 	}
 
 	async function handleDelete() {}
-
-	let submit = false;
-	let commentContent;
-
-	function handleKeyup(event) {
-		alert(1);
-		if (event.code == 'Enter') {
-			event.preventDefault();
-			event.target.value;
-			commentContent = event.target.value;
-			return false;
-		}
-	}
 </script>
 
 <a href="/posts">Go Back</a>

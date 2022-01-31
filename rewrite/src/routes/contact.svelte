@@ -1,0 +1,2 @@
+Your readers and potential media contacts must be able to get in touch with you. This is where a Contact page comes in handy.
+For bloggers who prefer to keep their personal lives private, you can use a contact form on this page. Others, however, prefer to list an email address and phone number. No matter which route you choose, it should be easy for readers to contact you via this page.

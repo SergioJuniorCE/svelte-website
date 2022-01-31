@@ -17,6 +17,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/posts">Posts</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/about">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contact">Contact</a>
+				</li>
 				<!-- <li class="nav-item dropdown">
 					<a
 						class="nav-link dropdown-toggle"
@@ -42,6 +48,7 @@
 			<form class="d-flex">
 				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
 				<button class="btn btn-outline-success" type="submit">Search</button>
+				<a href="/auth" class="btn btn-outline-secondary mx-2">Login</a>
 			</form>
 		</div>
 	</div>
