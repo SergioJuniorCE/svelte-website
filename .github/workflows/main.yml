@@ -1,0 +1,16 @@
+name: Surge workflow
+
+on: push
+
+jobs:
+  deploy:
+    name: Deploy master to surge.sh
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to foo-bar.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'sjcedev.surge.sh'
+          project: '.'
+          login: sergiojuniorce@gmail.com
+          token: 8785e99217ee1320776c0d75eafb6082
