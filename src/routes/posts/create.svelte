@@ -1,7 +1,8 @@
-<script lang='ts'>
-import CreatePost from "$lib/components/posts/CreatePost.svelte";
-
-  
+<script lang="ts">
+	import CreatePost from '$lib/components/posts/CreatePost.svelte';
 </script>
 
-<CreatePost/>
+<div class="mt-3">
+	<h2>Create post</h2>
+	<CreatePost />
+</div>

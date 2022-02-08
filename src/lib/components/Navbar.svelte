@@ -1,5 +1,10 @@
 <script>
 	import { session } from '$app/stores';
+	import { supabase } from '$lib/database';
+
+	async function handleLogout() {
+		const { error } = await supabase.auth.signOut();
+	}
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -52,12 +57,14 @@
 			<form class="d-flex">
 				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
 				<button class="btn btn-outline-success" type="submit">Search</button>
-				{#if $session}
-					<a href="/auth/logout" class="btn btn-outline-primary">Logout</a>
-				{:else}
-					<a href="/auth" class="btn btn-outline-secondary mx-2">Login</a>
-				{/if}
 			</form>
+			<div class="navbar-text">
+				{#if $session}
+					<span on:click={handleLogout} class="btn btn-outline-primary">Logout</span>
+				{:else}
+					<a href="/auth" class="btn btn-outline-secondary">Login</a>
+				{/if}
+			</div>
 		</div>
 	</div>
 </nav>
