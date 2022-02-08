@@ -19,7 +19,7 @@
 
 <main class="container">
 	<a href="/posts/create">Create a post</a>
-
+	<h2>test</h2>
 	<h2 class="mt-3">latests Posts</h2>
 	<div class="row">
 		{#if posts}
