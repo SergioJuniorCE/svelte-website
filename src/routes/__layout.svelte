@@ -1,7 +1,4 @@
 <script lang="ts">
-	import 'bootswatch/dist/cyborg/bootstrap.min.css';
-	import 'bootstrap/dist/js/bootstrap.min.js';
-	import 'sweetalert2/dist/sweetalert2.min.css';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import { supabase } from '$lib/database';
 	import { session } from '$app/stores';
@@ -13,10 +10,14 @@
 			$session = ses;
 		});
 	}
-	console.log($session);
 </script>
 
 <Navbar />
 <main class="container">
 	<slot />
 </main>
+
+<style>
+	@import 'bootswatch/dist/cyborg/bootstrap.min.css';
+	@import 'sweetalert2/dist/sweetalert2.min.css';
+</style>

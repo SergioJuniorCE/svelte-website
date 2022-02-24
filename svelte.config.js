@@ -15,6 +15,11 @@ const config = {
 			assets: 'build',
 			fallback: null
 		}),
+		vite: {
+			ssr: {
+				noExternal: ['chart.js']
+			}
+		}
 	}
 };
 

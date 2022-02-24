@@ -6,9 +6,9 @@
 	import LoginForm from '$lib/components/auth/LoginForm.svelte';
 	import RegisterForm from '../../lib/components/auth/RegisterForm.svelte';
 
-	if ($session) {
-		goto('/');
-	}
+	// if ($session) {
+	// 	goto('/');
+	// }
 </script>
 
 <p class="mt-3">Login</p>
