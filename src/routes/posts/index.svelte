@@ -1,13 +1,11 @@
 <script context="module">
 	import { supabase } from '$lib/database';
 	export async function load() {
-		const { data: featuredPosts } = await supabase.from('posts').select('*').eq('featured', true);
-		const { data: normalPosts } = await supabase.from('posts').select('*').eq('featured', false);
+		const { data } = await supabase.from('posts').select('*');
 
 		return {
 			props: {
-				featuredPosts,
-				normalPosts
+				posts: data
 			}
 		};
 	}
@@ -17,29 +15,15 @@
 	import PostCard from '$lib/components/posts/PostCard.svelte';
 	import SpinnerCard from '$lib/components/SpinnerCard.svelte';
 
-	export let featuredPosts;
-	export let normalPosts;
+	export let posts;
 </script>
 
 <main>
 	<div class="text-center">
 		<h3>Posts</h3>
-		<h6>⭐ Featured posts</h6>
-		{#if featuredPosts}
+		{#if posts}
 			<div class="row">
-				{#each featuredPosts as { title }}
-					<PostCard {title} />
-				{:else}
-					<p>No posts atm</p>
-				{/each}
-			</div>
-		{:else}
-			<SpinnerCard />
-		{/if}
-		<h6>💥 Regular posts</h6>
-		{#if normalPosts}
-			<div class="row">
-				{#each normalPosts as { title }}
+				{#each posts as { title }}
 					<PostCard {title} />
 				{:else}
 					<p>No posts atm</p>

@@ -9,7 +9,7 @@
 
 	let conf = constants.TINYMCE_CONFIG;
 
-	$: editing = false;
+	$: isEditing = false;
 
 	onMount(async () => {
 		let { data, error } = await supabase.from('posts').select('*').eq('title', $page.params.slug);
@@ -31,7 +31,7 @@
 	}
 
 	async function handleEditToggle() {
-		editing = !editing;
+		isEditing = !isEditing;
 	}
 
 	async function handleDelete() {}
@@ -39,15 +39,24 @@
 
 <a href="/posts">Go Back</a>
 <div>
-	<button class="btn btn-primary" on:click={handleEditToggle}>Edit</button>
-	{#if editing}
-		<button type="button" class="btn btn-success mx-2" on:click={handleEdit}>Save changes</button>
+	<button 
+		class="btn btn-primary" 
+		class:btn-primary={!isEditing}
+		class:btn-outline-primary={isEditing}
+		on:click={handleEditToggle}>{isEditing ? 'Close edit' : 'Edit'}
+	</button>
+	{#if isEditing}
+		<button 
+			type="button" 
+			class="btn btn-outline mx-2" 
+			 
+			on:click={handleEdit}>Save changes</button>
 	{/if}
 </div>
 
 <div id="post-data">
 	{#if post}
-		{#if editing}
+		{#if isEditing}
 			<div class="my-3">
 				<label for="post-title">Title</label>
 				<input name="post-title" type="text" class="form-control" bind:value={post.title} />
