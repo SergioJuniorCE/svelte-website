@@ -1,4 +1,6 @@
 <script lang="ts">
+import { goto } from '$app/navigation';
+
 	import { supabase } from '$lib/database';
 
 	let email: string;
@@ -7,6 +9,7 @@
 	async function handleSignIn() {
 		const { error } = await supabase.auth.signIn({ email, password });
 		if (error) alert(error.message);
+		goto('/');
 	}
 </script>
 

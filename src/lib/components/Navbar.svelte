@@ -35,6 +35,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/budget">Budget</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/meals">Meals</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/trips">Trips</a>
+				</li>
 				<!-- <li class="nav-item dropdown">
 					<a
 						class="nav-link dropdown-toggle"
@@ -65,7 +71,7 @@
 				{#if $session}
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item dropdown">
-							<a	
+							<a
 								class="nav-link dropdown-toggle"
 								href="/profile"
 								id="navbarDropdown"
@@ -74,11 +80,13 @@
 								aria-expanded="false"
 							>
 								<span>
-									<!-- {$session.user.email} -->
+									{#if $session.user}
+										Hello, {$session.user.email.split('@')[0]}
+									{/if}
 								</span>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#!">Action</a></li>
+								<li><span class="dropdown-item" on:click={handleLogout} >Logout</span></li>
 								<li><a class="dropdown-item" href="#!">Another action</a></li>
 								<li><hr class="dropdown-divider" /></li>
 								<li><a class="dropdown-item" href="#!">Something else here</a></li>

@@ -1,40 +1,134 @@
 <script context="module">
 	import { getBudget } from '$lib/utils';
-	export async function load({ session }) {
-		try {
-			const budgets = await getBudget(session.user.id);
-			return {
-				props: {
-					budgets
-				}
-			};
-		} catch (error) {
-			if (error instanceof TypeError) {
-				return {
-					props: {
-						message: 'Retrieving user.',
-						loading: true
-					}
-				};
-			}
-		}
-	}
+	import { onMount } from 'svelte';
+	// export async function load({ session }) {
+	// 	try {
+	// 		const budgets = await getBudget(session.user.id);
+	// 		return {
+	// 			props: {
+	// 				budgets
+	// 			}
+	// 		};
+	// 	} catch (error) {
+	// 		if (error instanceof TypeError) {
+	// 			return {
+	// 				props: {
+	// 					message: 'Retrieving user.',
+	// 					loading: true
+	// 				}
+	// 			};
+	// 		}
+	// 	}
+	// }
 </script>
 
 <script lang="ts">
-	export let budgets: any;
-	export let loading: boolean;
-	export let message: string;
+	import { expenses } from '$lib/stores';
+
+	import CreateExpenseModal from '../lib/components/CreateExpenseModal.svelte';
+	let section: number;
+	let range: string;
+
+	onMount(async () => {
+		// get section from localStorage
+		section = parseInt(localStorage.getItem('section')) || 1;
+		range = localStorage.getItem('range') || 'biweekly';
+	});
+
+	function handleNextSection() {
+		section++;
+		localStorage.setItem('section', section.toString());
+	}
+
+	function handlePreviousSection() {
+		if (section !== 1) {
+			section--;
+		}
+		localStorage.setItem('section', section.toString());
+	}
+
+	function handleRange() {
+		localStorage.setItem('range', range);
+	}
 </script>
 
-{#if loading}
-	<h2>{message}</h2>
-{:else if budgets}
-	{#each budgets as budget}
-		<pre>{JSON.stringify(budget, null, 2)}</pre>
-		<p>{JSON.stringify(budget.items)}</p>
-		<br />
-	{/each}
-{:else}
-	<h2>No budgets found.</h2>
+<!-- selecting budget range -->
+{#if section == 1}
+	<p>Select a range of budget</p>
+	<!-- select with 3 options -->
+	<div class="mb-3">
+		<label for="budget-range" class="form-label">Range</label>
+		<select
+			class="form-control"
+			name="budget-range"
+			id="budget-range"
+			bind:value={range}
+			on:change={handleRange}
+		>
+			<option value="weekly">Weeks</option>
+			<option value="biweekly">Bi-Weeks</option>
+			<option value="monthly">Months</option>
+		</select>
+	</div>
+{:else if section == 2}
+	<h2 class="mt-3">Expense list</h2>
+	<div class="my-3">
+		<CreateExpenseModal />
+	</div>
+
+	<div style="display: flex; justify-content: center;">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th />
+					<th>date</th>
+					<th>name</th>
+					<th>price</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#if $expenses}
+					{#each $expenses as expense}
+						<tr>
+							<td>📝</td>
+							<td>{expense.date}</td>
+							<td>{expense.name}</td>
+							<td>{expense.amount}</td>
+						</tr>
+					{/each}
+				{/if}
+			</tbody>
+			<tfoot>
+				<td />
+				<td />
+				<td />
+				<td>1000</td>
+			</tfoot>
+		</table>
+	</div>
+
+	{$expenses}
+
+	<div>
+		{#if range === 'weekly'}
+			period: weekly
+		{:else if range === 'biweekly'}
+			period: biweekly
+		{:else if range === 'monthly'}
+			period: monthly
+		{/if}
+	</div>
 {/if}
+
+<!-- Navigation buttons -->
+<div>
+	<button type="button" class="btn btn-danger" on:click={handlePreviousSection}>Previous</button>
+	<button type="button" class="btn btn-success" on:click={handleNextSection}>Next</button>
+	{section}
+</div>
+
+<style type="text/scss">
+	#budget-range {
+		width: 50%;
+	}
+</style>
