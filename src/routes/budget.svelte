@@ -1,31 +1,25 @@
 <script context="module">
-	import { getBudget } from '$lib/utils';
 	import { onMount } from 'svelte';
-	// export async function load({ session }) {
-	// 	try {
-	// 		const budgets = await getBudget(session.user.id);
-	// 		return {
-	// 			props: {
-	// 				budgets
-	// 			}
-	// 		};
-	// 	} catch (error) {
-	// 		if (error instanceof TypeError) {
-	// 			return {
-	// 				props: {
-	// 					message: 'Retrieving user.',
-	// 					loading: true
-	// 				}
-	// 			};
-	// 		}
-	// 	}
-	// }
+	export async function load({ session }) {
+		try {
+			const { data: expenses } = await supabase.from('expense_items').select('*');
+			return {
+				props: {
+					 
+				}
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	}
 </script>
 
 <script lang="ts">
-	import { expenses } from '$lib/stores';
+	import CreateExpenseModal from '$lib/components/CreateExpenseModal.svelte';
+	import { supabase } from '$lib/database';
 
-	import CreateExpenseModal from '../lib/components/CreateExpenseModal.svelte';
+	export let expenses;
+
 	let section: number;
 	let range: string;
 
@@ -87,8 +81,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#if $expenses}
-					{#each $expenses as expense}
+				{#if expenses}
+					{#each expenses as expense}
 						<tr>
 							<td>📝</td>
 							<td>{expense.date}</td>

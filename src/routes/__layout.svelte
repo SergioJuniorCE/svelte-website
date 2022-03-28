@@ -1,8 +1,11 @@
 <script lang="ts">
-	import Navbar from '$lib/components/Navbar.svelte';
+	import 'sweetalert2';
+
 	import { supabase } from '$lib/database';
 	import { session } from '$app/stores';
 	import { browser } from '$app/env';
+
+	import Navbar from '$lib/components/Navbar.svelte';
 
 	if (browser) {
 		$session = supabase.auth.session();
