@@ -1,0 +1,1 @@
+import{O as i}from"./vendor-6ff58972.js";const I=i("https://lxlwhkztwqrcjmpwvztt.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNjQyMTkyMzY3LCJleHAiOjE5NTc3NjgzNjd9.ur_jYUZdyOHXQj1v_UxC5lRvPvbZ61dY5N5ROFjONCI");export{I as s};
