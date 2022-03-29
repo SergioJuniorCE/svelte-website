@@ -49,13 +49,8 @@ function split_headers(headers) {
 function init(manifest) {
 	const server = new _0SERVER.Server(manifest);
 
-	return async (event, context) => {
-		const rendered = await server.respond(to_request(event), {
-			platform: { context },
-			getClientAddress() {
-				return event.headers['x-nf-client-connection-ip'];
-			}
-		});
+	return async (event) => {
+		const rendered = await server.respond(to_request(event));
 
 		const partial_response = {
 			statusCode: rendered.status,
