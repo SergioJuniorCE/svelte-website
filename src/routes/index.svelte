@@ -1,8 +1,5 @@
 <script lang="ts">
-  import PostCard from './PostCard.svelte';
-
-	import { goto } from '$app/navigation';
-
+	import PostCard from '$lib/components/PostCard.svelte';
 	import { supabase } from '$lib/database';
 
 	import { onMount } from 'svelte';
@@ -10,13 +7,9 @@
 	let posts: any[];
 
 	onMount(async () => {
-		const { data, error } = await supabase.from('posts').select('*').limit(3);
+		const { data } = await supabase.from('posts').select('*').limit(3);
 		posts = data;
 	});
-
-	function handlePostClick(title: string) {
-		goto('/posts/' + title);
-	}
 </script>
 
 <main class="container">
@@ -25,7 +18,7 @@
 	<div class="row">
 		{#if posts}
 			{#each posts as { title, updated_at, description }}
-				<PostCard {title} {updated_at} {description}></PostCard>
+				<PostCard {title} {updated_at} {description} />
 			{/each}
 		{:else}
 			loading
