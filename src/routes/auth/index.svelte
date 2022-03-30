@@ -14,5 +14,6 @@
 <p class="mt-3">Login</p>
 <LoginForm />
 <hr />
-<p>Register</p>
-<RegisterForm />
+<div class="d-flex align-content-center">
+	<p>New here? click this link <span><a href="auth/register">to register</a></span></p>
+</div>
