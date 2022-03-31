@@ -16,7 +16,7 @@
 </script>
 
 <Navbar />
-<main class="container">
+<main>
 	<slot />
 </main>
 

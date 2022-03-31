@@ -19,13 +19,13 @@
 	<div class="error mx-auto" data-text={status}>
 		<p class="m-0">{status}</p>
 	</div>
-	<div class="text-center" style="color: black">
+	<div class="text-center" style="color: white">
 		<!-- Only for debug -->
 		<p>[{message}]</p>
-		<p>Parece que encontraste un error en la matrix...</p>
+		<p>Looks like you found a bug in the matrix...</p>
 		<a
 			href="/"
-			class="link">⬅️ Regresa al menu principal</a
+			class="link">⬅️ Come back to main page</a
 		>
 	</div>
 </div>
