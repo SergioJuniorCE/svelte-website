@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { session } from '$app/stores';
+import SpinnerCard from '$lib/components/spinners/SpinnerCard.svelte';
 	import { onMount } from 'svelte';
 
 	let showSession: boolean;
@@ -30,8 +31,8 @@
 <div class="row">
 	<div class="col-2">
 		<div>
-			<button on:click={toggleSessionCode}>Session toggle</button>
-      <button on:click={toggleDynamicArray}>Dynamic toggle</button>
+			<button class="btn btn-primary mb-3" on:click={toggleSessionCode}>Session toggle</button>
+      <button class="btn btn-primary mb-3" on:click={toggleDynamicArray}>Dynamic toggle</button>
 		</div>
 		{#if showDynamicArray}
 			<div class="mx-5">

@@ -1,6 +1,17 @@
 <script>
 	import { session } from '$app/stores';
 	import { supabase } from '$lib/database';
+	import { onMount } from 'svelte';
+	import SpinnerDots from './spinners/SpinnerDots.svelte';
+
+	let user;
+	onMount(async () => {
+		if ($session.hasOwnProperty('user')) {
+			user = $session['user'];
+		} else {
+			user = null;
+		}
+	});
 
 	async function handleLogout() {
 		const { error } = await supabase.auth.signOut();
@@ -41,6 +52,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/trips">Trips</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/test">test</a>
+				</li>
 				<!-- <li class="nav-item dropdown">
 					<a
 						class="nav-link dropdown-toggle"
@@ -68,7 +82,7 @@
 				<button class="btn btn-outline-success" type="submit">Search</button>
 			</form>
 			<div class="navbar-text">
-				{#if $session}
+				{#if user}
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item dropdown">
 							<a
@@ -80,13 +94,15 @@
 								aria-expanded="false"
 							>
 								<span>
-									{#if $session.user}
-										Hello, {$session.user.email.split('@')[0]}
+									{#if user}
+										Hello, {user.email.split('@')[0]}
+									{:else}
+										<SpinnerDots />
 									{/if}
 								</span>
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><span class="dropdown-item" on:click={handleLogout} >Logout</span></li>
+								<li><span class="dropdown-item" on:click={handleLogout}>Logout</span></li>
 								<li><a class="dropdown-item" href="#!">Another action</a></li>
 								<li><hr class="dropdown-divider" /></li>
 								<li><a class="dropdown-item" href="#!">Something else here</a></li>

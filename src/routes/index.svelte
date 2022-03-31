@@ -1,15 +1,6 @@
 <script lang="ts">
 	import PostCard from '$lib/components/PostCard.svelte';
-	import { supabase } from '$lib/database';
-
-	import { onMount } from 'svelte';
-
-	let posts: any[];
-
-	onMount(async () => {
-		const { data } = await supabase.from('posts').select('*').limit(3);
-		posts = data;
-	});
+	export let posts: any[];
 </script>
 
 <main class="container">
@@ -25,3 +16,11 @@
 		{/if}
 	</div>
 </main>
+
+<style>
+	.center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>

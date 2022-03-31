@@ -13,7 +13,7 @@
 
 <script>
 	import PostCard from '$lib/components/posts/PostCard.svelte';
-	import SpinnerCard from '$lib/components/SpinnerCard.svelte';
+	import SpinnerCard from '$lib/components/spinners/SpinnerCard.svelte';
 
 	export let posts;
 </script>
