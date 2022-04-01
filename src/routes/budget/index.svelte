@@ -1,23 +1,7 @@
-<script context="module">
-	import { onMount } from 'svelte';
-	export async function load({ session }) {
-		try {
-			const { data: expenses } = await supabase.from('expense_items').select('*');
-			return {
-				props: {
-					 
-				}
-			}
-		} catch (error) {
-			console.error(error);
-		}
-	}
-</script>
-
 <script lang="ts">
 	import CreateExpenseModal from '$lib/components/CreateExpenseModal.svelte';
 	import { supabase } from '$lib/database';
-
+	import { onMount } from 'svelte';
 	export let expenses;
 
 	let section: number;
