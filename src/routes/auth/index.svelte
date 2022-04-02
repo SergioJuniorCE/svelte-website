@@ -16,7 +16,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Register</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+				<button type="button" class="btn-close cross" data-bs-dismiss="modal" aria-label="Close" />
 			</div>
 			<div class="modal-body">
 				<fieldset class="login-fieldset">
@@ -27,6 +27,7 @@
 				</fieldset>
 			</div>
 			<div class="modal-footer" />
+								<input type="checkbox"><p>aceptar los terminos y condiciones</p>
 		</div>
 	</div>
 </div>
@@ -132,6 +133,7 @@
 		color: green;
 		height: 100vh;
 	}
+
 	.modalCenter {
 		top: 10%;
 		left: 30%;
@@ -291,6 +293,10 @@
 		margin: auto;
 		@include position(relative);
 		@include border($radius: 5px);
+		
+	.cross{
+		margin-right: 5px;
+	}
 
 		&-fieldset {
 			animation: login-fadein $animation-time ease-in-out forwards;
