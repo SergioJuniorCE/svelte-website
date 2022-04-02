@@ -1,17 +1,45 @@
 <script lang="ts">
-	function handleLogin () {
-		console.log("login");
+	function handleLogin() {
+		console.log('login');
 	}
 </script>
+
+<!-- Modal -->
+<div
+	class="modal fade"
+	id="registerModal"
+	tabindex="-1"
+	aria-labelledby="exampleModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modalCenter ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Register</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+			</div>
+			<div class="modal-body">
+				<fieldset class="login-fieldset">
+					<input type="text" placeholder="Username" class="register-fieldset-field" />
+					<input type="text" placeholder="E-Mail" class="register-fieldset-field" />
+					<input type="password" placeholder="******" class="register-fieldset-field" />
+					<button class="register-fieldset-submit"> Sign Up </button>
+				</fieldset>
+			</div>
+			<div class="modal-footer" />
+		</div>
+	</div>
+</div>
+
 <div class="Parent">
 	<div class="child1">
-		<div id="blurFrontImage"><div id="blurBackImage"/></div>
+		<div id="blurFrontImage"><div id="blurBackImage" /></div>
 	</div>
 
 	<div class="child2">
 		<div class="container">
 			<main class="main">
-				<a class="button-twitter" href="#" target="_blank" alt="SJCE"/>
+				<a class="button-twitter" href="#" target="_blank" alt="SJCE" />
 				<form class="login" on:submit|preventDefault={handleLogin}>
 					<svg class="login-sides">
 						<line class="top-right first" x1="50%" x2="100%" y1="0" y2="0" />
@@ -27,7 +55,13 @@
 						<button class="login-fieldset-submit"> Login </button>
 					</fieldset>
 					<fieldset class="login-fieldset">
-						<button class="login-fieldset-submit" data-bs-toggle="modal" data-bs-target="#registerModal"> Register </button>
+						<button
+							class="login-fieldset-submit"
+							data-bs-toggle="modal"
+							data-bs-target="#registerModal"
+						>
+							Register
+						</button>
 					</fieldset>
 				</form>
 			</main>
@@ -52,25 +86,6 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <style lang="scss">
@@ -117,7 +132,11 @@
 		color: green;
 		height: 100vh;
 	}
-
+	.modalCenter {
+		top: 10%;
+		left: 30%;
+		transform: translate(-30%, -30%);
+	}
 	// mixins
 	@mixin size($width, $height) {
 		height: $height;
@@ -251,6 +270,51 @@
 				background-color: $twitter-color;
 				box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
 				color: #fff;
+				font-weight: bold;
+				@include border($radius: 3px);
+			}
+		}
+	}
+
+	%register-item {
+		min-width: 250px;
+		font-size: 12px;
+		margin: 0.8em auto;
+		padding: 0.8em;
+		width: 80%;
+		box-sizing: border-box;
+	}
+
+	.register {
+		width: 100px;
+		box-sizing: border-box;
+		margin: auto;
+		@include position(relative);
+		@include border($radius: 5px);
+
+		&-fieldset {
+			animation: login-fadein $animation-time ease-in-out forwards;
+			animation-delay: $animation-time;
+			box-sizing: border-box;
+			display: flex;
+			flex-flow: column wrap;
+			justify-content: space-between;
+			padding: 0px 0;
+			opacity: 0;
+
+			&-field {
+				@extend %register-item;
+				background-color: rgb(85, 85, 85);
+				box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.89);
+				border-radius: 5px;
+				@include border($size: 1px, $color: #f2f2f2);
+			}
+			&-submit {
+				@extend %register-item;
+				background-color: $twitter-color;
+				box-shadow: inset 0 0 0px 9999px #55acee;
+				color: #fff;
+				border-radius: 5px;
 				font-weight: bold;
 				@include border($radius: 3px);
 			}
