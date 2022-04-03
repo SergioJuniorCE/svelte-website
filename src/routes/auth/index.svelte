@@ -5,29 +5,37 @@
 </script>
 
 <!-- Modal -->
-<div
-	class="modal fade"
-	id="registerModal"
-	tabindex="-1"
-	aria-labelledby="exampleModalLabel"
-	aria-hidden="true"
->
-	<div class="modal-dialog modalCenter ">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Register</h5>
-				<button type="button" class="btn-close cross" data-bs-dismiss="modal" aria-label="Close" />
+<div class="Register">
+	<div
+		class="modal fade"
+		id="registerModal"
+		tabindex="-1"
+		aria-labelledby="exampleModalLabel"
+		aria-hidden="true"
+	>
+		<div class="modal-dialog modalCenter ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Register</h5>
+					<button
+						type="button"
+						class="btn-close cross"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					/>
+				</div>
+				<div class="modal-body">
+					<fieldset class="login-fieldset">
+						<input type="text" placeholder="Username" class="register-fieldset-field" />
+						<input type="text" placeholder="E-Mail" class="register-fieldset-field" />
+						<input type="password" placeholder="******" class="register-fieldset-field" />
+						<button class="register-fieldset-submit"> Sign Up </button>
+					</fieldset>
+				</div>
+				<div class="modal-footer" />
+				<input type="checkbox" />
+				<p>aceptar los terminos y condiciones</p>
 			</div>
-			<div class="modal-body">
-				<fieldset class="login-fieldset">
-					<input type="text" placeholder="Username" class="register-fieldset-field" />
-					<input type="text" placeholder="E-Mail" class="register-fieldset-field" />
-					<input type="password" placeholder="******" class="register-fieldset-field" />
-					<button class="register-fieldset-submit"> Sign Up </button>
-				</fieldset>
-			</div>
-			<div class="modal-footer" />
-								<input type="checkbox"><p>aceptar los terminos y condiciones</p>
 		</div>
 	</div>
 </div>
@@ -104,7 +112,21 @@
 		display: flex;
 		flex-direction: row;
 	}
-
+	@media screen and (max-width: 600px) {
+		.child1 {
+			display: none;
+		}
+		.child2 {
+			display: block;
+			margin-left: 5em;
+			.login-with-btn {
+				margin-left: 3em;
+			}
+			.button-twitter {
+				margin-left: 7.5rem;
+			}
+		}
+	}
 	.child1 {
 		width: 100%;
 		height: 100vh;
@@ -293,10 +315,10 @@
 		margin: auto;
 		@include position(relative);
 		@include border($radius: 5px);
-		
-	.cross{
-		margin-right: 5px;
-	}
+
+		.cross {
+			margin-right: 5px;
+		}
 
 		&-fieldset {
 			animation: login-fadein $animation-time ease-in-out forwards;
