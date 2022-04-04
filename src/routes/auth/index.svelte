@@ -101,7 +101,7 @@
 	// variables
 
 	$default-font-size: 8px;
-	$twitter-color: #55acee;
+	$twitter-color: #a338ce;
 	$animation-time: 0.5s;
 	$white: #fff;
 	$google-blue: #4285f4;
@@ -351,7 +351,7 @@
 
 	.button-twitter {
 		animation: button-twitter-animation $animation-time forwards;
-		background-image: url('https://image.flaticon.com/icons/svg/145/145812.svg');
+		background-image: url('../static/img/image.png');
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		background-color: $twitter-color;
