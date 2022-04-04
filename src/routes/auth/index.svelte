@@ -5,7 +5,7 @@
 </script>
 
 <!-- Modal -->
-<div class="Register">
+<div class="registerModal">
 	<div
 		class="modal fade"
 		id="registerModal"
@@ -117,14 +117,14 @@
 			display: none;
 		}
 		.child2 {
-			display: block;
-			margin-left: 5em;
-			.login-with-btn {
-				margin-left: 3em;
-			}
-			.button-twitter {
-				margin-left: 7.5rem;
-			}
+			display: table;
+			margin: auto;
+			
+		}
+	}
+	@media screen and (max-height: 450px) {
+		.main {
+			margin-top: 0vh;
 		}
 	}
 	.child1 {
