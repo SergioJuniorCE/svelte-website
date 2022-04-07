@@ -48,7 +48,7 @@
 	<div class="right-col">
 		<div class="container">
 			<main class="main">
-				<button class="button-twitter" href="#" target="_blank" alt="SJCE"/>
+				<button class="button-twitter" href="#" target="_blank" alt="SJCE" />
 				<form class="login" on:submit|preventDefault={handleLogin}>
 					<svg class="login-sides">
 						<line class="top-right first" x1="50%" x2="100%" y1="0" y2="0" />
