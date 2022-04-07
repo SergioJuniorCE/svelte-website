@@ -40,15 +40,15 @@
 	</div>
 </div>
 
-<div class="Parent">
-	<div class="child1">
+<div class="wapper">
+	<div class="left-col">
 		<div id="blurFrontImage"><div id="blurBackImage" /></div>
 	</div>
 
-	<div class="child2">
+	<div class="right-col">
 		<div class="container">
 			<main class="main">
-				<a class="button-twitter" href="#" target="_blank" alt="SJCE" />
+				<button class="button-twitter" href="#" target="_blank" alt="SJCE"/>
 				<form class="login" on:submit|preventDefault={handleLogin}>
 					<svg class="login-sides">
 						<line class="top-right first" x1="50%" x2="100%" y1="0" y2="0" />
@@ -108,18 +108,17 @@
 	$button-active-blue: #1669f2;
 	$facebook-blue: #3a559f;
 
-	.Parent {
+	.wapper {
 		display: flex;
 		flex-direction: row;
 	}
 	@media screen and (max-width: 600px) {
-		.child1 {
+		.left-col {
 			display: none;
 		}
-		.child2 {
+		.right-col {
 			display: table;
 			margin: auto;
-			
 		}
 	}
 	@media screen and (max-height: 450px) {
@@ -127,7 +126,7 @@
 			margin-top: 0vh;
 		}
 	}
-	.child1 {
+	.left-col {
 		width: 100%;
 		height: 100vh;
 		background-size: cover;
@@ -136,21 +135,21 @@
 		color: white;
 	}
 	#blurBackImage {
-		background-image: url('../static/img/hyperbeast-removebg.png');
+		background-image: url('/static/img/hyperbeast-removebg.png');
 		background-size: cover;
 		background-position: center;
 		width: 100%;
 		height: 100vh;
 	}
 	#blurFrontImage {
-		background-image: url(../static/img/grafiti.jpg);
+		background-image: url('/static/img/grafiti.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
 		width: 100%;
 		height: 100vh;
 	}
-	.child2 {
+	.right-col {
 		width: 50%;
 		color: green;
 		height: 100vh;
