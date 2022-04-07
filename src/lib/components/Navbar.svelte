@@ -6,10 +6,11 @@
 
 	let user;
 	onMount(async () => {
-		if ($session.hasOwnProperty('user')) {
-			user = $session['user'];
-		} else {
-			user = null;
+		user = null;
+		if ($session) {
+			if ($session.hasOwnProperty('user')) {
+				user = $session['user'];
+			}
 		}
 	});
 
