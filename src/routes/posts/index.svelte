@@ -19,7 +19,7 @@
 </script>
 
 <main>
-	<div class="text-center">
+	<div class="text-center container">
 		<h3>Posts</h3>
 		{#if posts}
 			<div class="row">
