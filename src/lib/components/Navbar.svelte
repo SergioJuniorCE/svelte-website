@@ -41,9 +41,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/minecraft">Minecraft</a>
 				</li>
-				<!-- <li class="nav-item">
+				<li class="nav-item">
 					<a class="nav-link" href="/trips">Trips</a>
-				</li> -->
+				</li>
 				<!-- <li class="nav-item">
 					<a class="nav-link" href="/about">About</a>
 				</li>
