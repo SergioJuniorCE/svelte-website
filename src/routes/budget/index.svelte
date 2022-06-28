@@ -1,112 +1,99 @@
 <script lang="ts">
-	import CreateExpenseModal from '$lib/components/CreateExpenseModal.svelte';
-	import { supabase } from '$lib/database';
 	import { onMount } from 'svelte';
-	export let expenses;
 
-	let section: number;
-	let range: string;
+	type Item = {
+		amount: number;
+		description: string;
+	};
+	let amount: number;
+	let description: string;
+
+	$: items = [];
 
 	onMount(async () => {
-		// get section from localStorage
-		section = parseInt(localStorage.getItem('section')) || 1;
-		range = localStorage.getItem('range') || 'biweekly';
+		items = JSON.parse(localStorage.getItem('items') || '[]');
 	});
 
-	function handleNextSection() {
-		section++;
-		localStorage.setItem('section', section.toString());
+	function handleAddItemButton() {
+		items = [...items, { amount, description }];
+		localStorage.setItem('items', JSON.stringify(items));
+		amount = 0;
+		description = '';
 	}
 
-	function handlePreviousSection() {
-		if (section !== 1) {
-			section--;
+	function handleItemsChanged() {
+		items = [...items];
+		localStorage.setItem('items', JSON.stringify(items));
+	}
+
+	function handleChangePositions(index: number, direction: number) {
+		let itemAux: Item;
+
+		console.log(index, direction);
+		if (index == 0 && direction == 1) {
+			console.log('cant go further up');
+			return;
 		}
-		localStorage.setItem('section', section.toString());
-	}
+		if (index == items.length - 1 && direction == -1) {
+			console.log('cant go further down');
+			return;
+		}
 
-	function handleRange() {
-		localStorage.setItem('range', range);
+		console.log('normal logic');
+		itemAux = items[index];
+		// items[index] = items[index + direction];
+		// items[index + direction] = itemAux;
+		// items = [...items];
 	}
 </script>
 
-<!-- selecting budget range -->
-{#if section == 1}
-	<p>Select a range of budget</p>
-	<!-- select with 3 options -->
-	<div class="mb-3">
-		<label for="budget-range" class="form-label">Range</label>
-		<select
-			class="form-control"
-			name="budget-range"
-			id="budget-range"
-			bind:value={range}
-			on:change={handleRange}
-		>
-			<option value="weekly">Weeks</option>
-			<option value="biweekly">Bi-Weeks</option>
-			<option value="monthly">Months</option>
-		</select>
-	</div>
-{:else if section == 2}
-	<h2 class="mt-3">Expense list</h2>
-	<div class="my-3">
-		<CreateExpenseModal />
-	</div>
-
-	<div style="display: flex; justify-content: center;">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th />
-					<th>date</th>
-					<th>name</th>
-					<th>price</th>
-				</tr>
-			</thead>
-			<tbody>
-				{#if expenses}
-					{#each expenses as expense}
-						<tr>
-							<td>📝</td>
-							<td>{expense.date}</td>
-							<td>{expense.name}</td>
-							<td>{expense.amount}</td>
-						</tr>
+<div class="container">
+	<h2 class="mt-3">Expense planer</h2>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="mb-3">
+				<div class="d-flex gap-3 mb-3">
+					<input type="number" class="form-control form-control-sm" bind:value={amount} />
+					<input type="text" class="form-control form-control-sm" bind:value={description} />
+					<button type="button" class="btn btn-primary" on:click={handleAddItemButton}>+</button>
+				</div>
+				{#if items != []}
+					{#each items as item, i}
+						<div class="d-flex gap-3 mt-3" on:change={handleItemsChanged}>
+							<div>
+								<i
+									class="fa fa-arrow-up"
+									on:click={() => {
+										handleChangePositions(i, 1);
+									}}
+								/>
+							</div>
+							<div>
+								<i
+									class="fa-solid fa-arrow-down"
+									on:click={() => {
+										handleChangePositions(i, -1);
+									}}
+								/>
+							</div>
+							<input type="number" class="form-control form-control-sm" bind:value={item.amount} />
+							<input
+								type="text"
+								class="form-control form-control-sm"
+								bind:value={item.description}
+							/>
+							<button type="button" class="btn btn-danger">-</button>
+						</div>
 					{/each}
+				{:else}
+					<!-- else content here -->
 				{/if}
-			</tbody>
-			<tfoot>
-				<td />
-				<td />
-				<td />
-				<td>1000</td>
-			</tfoot>
-		</table>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<p>Incomes: xxxx</p>
+			<p>Expenses: xxxx</p>
+			<p>Remaining: xxxx</p>
+		</div>
 	</div>
-
-	{$expenses}
-
-	<div>
-		{#if range === 'weekly'}
-			period: weekly
-		{:else if range === 'biweekly'}
-			period: biweekly
-		{:else if range === 'monthly'}
-			period: monthly
-		{/if}
-	</div>
-{/if}
-
-<!-- Navigation buttons -->
-<div>
-	<button type="button" class="btn btn-danger" on:click={handlePreviousSection}>Previous</button>
-	<button type="button" class="btn btn-success" on:click={handleNextSection}>Next</button>
-	{section}
 </div>
-
-<style type="text/scss">
-	#budget-range {
-		width: 50%;
-	}
-</style>
