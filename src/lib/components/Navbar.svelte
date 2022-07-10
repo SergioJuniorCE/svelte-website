@@ -1,10 +1,12 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
 	import { supabase } from '$lib/database';
 	import { onMount } from 'svelte';
 	import SpinnerDots from './spinners/SpinnerDots.svelte';
 
 	let user;
+
 	onMount(async () => {
 		user = null;
 		if ($session) {
@@ -16,6 +18,7 @@
 
 	async function handleLogout() {
 		const { error } = await supabase.auth.signOut();
+		goto('/auth');
 	}
 </script>
 
@@ -120,3 +123,5 @@
 		</div>
 	</div>
 </nav>
+
+style

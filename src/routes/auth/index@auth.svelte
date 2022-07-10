@@ -1,6 +1,24 @@
 <script lang="ts">
-	function handleLogin() {
-		console.log('login');
+	import { goto } from '$app/navigation';
+
+	import { supabase } from '$lib/database';
+	import Swal from 'sweetalert2';
+
+	let email: string;
+	let password: string;
+
+	async function handleLogin() {
+		const { error } = await supabase.auth.signIn({ email, password });
+		if (error) {
+			Swal.fire({
+				title: 'Error',
+				text: error.message,
+				icon: 'error',
+				confirmButtonText: 'OK'
+			});
+			return;
+		}
+		goto('/');
 	}
 </script>
 
@@ -59,9 +77,21 @@
 						<line class="bottom-right third" x1="100%" x2="50%" y1="100%" y2="100%" />
 					</svg>
 					<fieldset class="login-fieldset">
-						<input type="text" placeholder="Username" class="login-fieldset-field" />
-						<input type="password" placeholder="******" class="login-fieldset-field" />
-						<button class="login-fieldset-submit"> Login </button>
+						<input
+							name="email"
+							type="email"
+							placeholder="email"
+							class="login-fieldset-field"
+							bind:value={email}
+						/>
+						<input
+							name="password"
+							type="password"
+							placeholder="******"
+							class="login-fieldset-field"
+							bind:value={password}
+						/>
+						<button type="submit" class="login-fieldset-submit"> Login </button>
 					</fieldset>
 					<fieldset class="login-fieldset">
 						<button
