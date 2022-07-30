@@ -1,3 +1,1 @@
-<div class="auth">
-	<slot />
-</div>
+<slot />

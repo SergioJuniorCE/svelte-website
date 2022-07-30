@@ -1,10 +1,12 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
 	import { supabase } from '$lib/database';
 	import { onMount } from 'svelte';
 	import SpinnerDots from './spinners/SpinnerDots.svelte';
 
 	let user;
+
 	onMount(async () => {
 		user = null;
 		if ($session) {
@@ -16,6 +18,7 @@
 
 	async function handleLogout() {
 		const { error } = await supabase.auth.signOut();
+		goto('/auth');
 	}
 </script>
 
@@ -41,22 +44,22 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/minecraft">Minecraft</a>
 				</li>
-				<!-- <li class="nav-item">
+				<li class="nav-item">
 					<a class="nav-link" href="/trips">Trips</a>
-				</li> -->
+				</li>
 				<!-- <li class="nav-item">
 					<a class="nav-link" href="/about">About</a>
-				</li>
-				<li class="nav-item">
+				</li> -->
+				<!-- <li class="nav-item">
 					<a class="nav-link" href="/contact">Contact</a>
-				</li>
+				</li> -->
 				<li class="nav-item">
 					<a class="nav-link" href="/budget">Budget</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link" href="/meals">Meals</a>
-				</li>
-				<li class="nav-item">
+				</li> -->
+				<!-- <li class="nav-item">
 					<a class="nav-link" href="/test">test</a>
 				</li> -->
 				<!-- <li class="nav-item dropdown">
@@ -101,7 +104,7 @@
 									{#if user}
 										Hello, {user.email.split('@')[0]}
 									{:else}
-										<SpinnerDots />
+										<!-- <SpinnerDots /> -->
 									{/if}
 								</span>
 							</a>
