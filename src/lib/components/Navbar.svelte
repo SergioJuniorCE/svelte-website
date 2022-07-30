@@ -104,7 +104,7 @@
 									{#if user}
 										Hello, {user.email.split('@')[0]}
 									{:else}
-										<SpinnerDots />
+										<!-- <SpinnerDots /> -->
 									{/if}
 								</span>
 							</a>
@@ -123,5 +123,3 @@
 		</div>
 	</div>
 </nav>
-
-style
