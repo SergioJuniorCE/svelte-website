@@ -47,21 +47,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/trips">Trips</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="/about">About</a>
-				</li> -->
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="/contact">Contact</a>
-				</li> -->
 				<li class="nav-item">
 					<a class="nav-link" href="/budget">Budget</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="/meals">Meals</a>
-				</li> -->
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="/test">test</a>
-				</li> -->
 				<!-- <li class="nav-item dropdown">
 					<a
 						class="nav-link dropdown-toggle"
